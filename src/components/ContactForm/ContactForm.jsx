@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
 import { addItem } from 'redux/itemsSlice';
@@ -58,4 +59,12 @@ export const ContactForm = ({ contacts }) => {
       </button>
     </form>
   );
+};
+
+ContactForm.propType = {
+  contacts: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }),
 };

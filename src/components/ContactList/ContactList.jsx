@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getSearchValue } from 'redux/selectors';
 import { ContactListItem } from './ContactListItem';
@@ -17,7 +18,7 @@ export const ContactList = ({ contacts }) => {
       {!contacts.length && (
         <p className="inputName">Your contactlist is empty</p>
       )}
-      {!filteredContacts.length && (
+      {!filteredContacts.length && Boolean(contacts.length) && (
         <p className="inputName">No contacts found</p>
       )}
       <ul>
@@ -29,4 +30,12 @@ export const ContactList = ({ contacts }) => {
       </ul>
     </>
   );
+};
+
+ContactList.propType = {
+  contacts: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }),
 };
